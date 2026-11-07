@@ -66,7 +66,7 @@ export default function Hero({ scrollToSection }) {
           </motion.div>
 
           <div className="hero-greeting-block">
-            <span className="eyebrow-lead">WELCOME TO MY DIGITAL SPACE</span>
+            <span className="eyebrow-lead">WELCOME TO MY PORTFOLIO</span>
             <TypingName name={portfolio.name} roles={portfolio.roles} />
           </div>
 

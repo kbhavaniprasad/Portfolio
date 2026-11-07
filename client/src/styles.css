@@ -44,31 +44,31 @@
 /* Dark Mode Theme Overrides */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-primary: #0F172A;
-    --bg-secondary: #0A0F1D;
-    --bg-tertiary: #1E293B;
+    --bg-primary: #F0F7FF;
+    --bg-secondary: #E0F2FE;
+    --bg-tertiary: #BAE6FD;
 
-    --primary-blue: #38BDF8;
-    --primary-blue-hover: #0EA5E9;
-    --secondary-blue: #0284C7;
-    --accent-light-blue: #7DD3FC;
-    --soft-blue-wash: rgba(56, 189, 248, 0.08);
-    --soft-blue-border: rgba(56, 189, 248, 0.22);
-    --soft-blue-badge: rgba(56, 189, 248, 0.16);
-    --border-blue-glow: rgba(56, 189, 248, 0.35);
+    --primary-blue: #0284C7;
+    --primary-blue-hover: #0369A1;
+    --secondary-blue: #0EA5E9;
+    --accent-light-blue: #38BDF8;
+    --soft-blue-wash: #F0F7FF;
+    --soft-blue-border: #BAE6FD;
+    --soft-blue-badge: #E0F2FE;
+    --border-blue-glow: rgba(2, 132, 199, 0.28);
 
-    --text-dark: #F8FAFC;
-    --text-body: #CBD5E1;
-    --text-muted: #94A3B8;
-    --text-subtle: #64748B;
+    --text-dark: #0F172A;
+    --text-body: #334155;
+    --text-muted: #64748B;
+    --text-subtle: #94A3B8;
     --text-white: #FFFFFF;
 
-    --card-bg: rgba(15, 23, 42, 0.88);
-    --glass-bg: rgba(15, 23, 42, 0.88);
-    --glass-bg-hover: #1E293B;
-    --glass-border: rgba(56, 189, 248, 0.22);
-    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.55), 0 4px 12px -2px rgba(0, 0, 0, 0.4);
-    --card-shadow-hover: 0 16px 40px -8px rgba(56, 189, 248, 0.28), 0 6px 16px -2px rgba(0, 0, 0, 0.6);
+    --card-bg: rgba(240, 247, 255, 0.92);
+    --glass-bg: rgba(240, 247, 255, 0.92);
+    --glass-bg-hover: #F0F7FF;
+    --glass-border: #BAE6FD;
+    --card-shadow: 0 10px 30px -5px rgba(2, 132, 199, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+    --card-shadow-hover: 0 16px 40px -8px rgba(2, 132, 199, 0.18), 0 6px 16px -2px rgba(2, 132, 199, 0.06);
   }
 }
 
@@ -1724,7 +1724,7 @@ body {
 .preview-overlay-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(15, 23, 42, 0.45) 100%);
+  background: linear-gradient(180deg, transparent 50%, rgba(2, 132, 199, 0.25) 100%);
 }
 
 .project-duration-tag {
