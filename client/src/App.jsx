@@ -12,6 +12,7 @@ import SkillsSection from './components/SkillsSection.jsx';
 import ContactSection from './components/ContactSection.jsx';
 import QuestionnaireSection from './components/QuestionnaireSection.jsx';
 import Footer from './components/Footer.jsx';
+import BackToTop from './components/BackToTop.jsx';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -140,6 +141,9 @@ export default function App() {
 
       {/* Footer */}
       <Footer scrollToSection={scrollToSection} />
+
+      {/* Floating Back to Top Button */}
+      <BackToTop scrollToSection={scrollToSection} />
     </div>
   );
 }

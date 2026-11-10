@@ -1210,6 +1210,23 @@ body {
   margin-top: 48px;
 }
 
+/* Honors & Patents Side-by-Side Grid */
+.about-honors-patents-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .about-honors-patents-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.about-honors-patents-grid .about-subsection-block {
+  margin-top: 0;
+}
+
 .about-achievements-block {
   margin-top: 48px;
 }
@@ -2558,7 +2575,432 @@ body {
 }
 
 /* ==========================================================================
-   6. COMPREHENSIVE RESPONSIVE DESIGN (<=768px Tablet, <=480px Mobile)
+   4. COMPACT CARDS GRID (Honors, Patents, Certifications)
+   ========================================================================== */
+.compact-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .compact-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .compact-cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.compact-card-item {
+  display: flex;
+}
+
+/* Compact Card Styles */
+.compact-card-root {
+  width: 100%;
+  display: flex;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+
+.compact-card-inner {
+  width: 100%;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--soft-blue-border);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.compact-card-root:hover .compact-card-inner {
+  border-color: var(--primary-blue);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* Light sweep pass effect */
+.compact-card-root:hover .light-sweep-beam {
+  left: 150%;
+}
+
+/* Spotlight glow effect following mouse */
+.compact-card-root:hover .card-spotlight-glow {
+  opacity: 1;
+}
+
+/* Compact Card Header - Icon & Badge */
+.compact-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.compact-card-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--soft-blue-wash);
+  border: 1px solid var(--soft-blue-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-blue);
+  transition: all 0.3s ease;
+}
+
+.compact-card-root:hover .compact-card-icon-wrapper {
+  background: var(--primary-blue);
+  color: var(--text-white);
+  border-color: var(--primary-blue);
+}
+
+.compact-card-icon {
+  flex-shrink: 0;
+}
+
+.compact-card-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary-blue);
+  background: var(--soft-blue-wash);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--soft-blue-border);
+  white-space: nowrap;
+}
+
+/* Compact Card Title */
+.compact-card-title {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.35;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Compact Card Meta - Organization & Year */
+.compact-card-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+
+.compact-card-org {
+  color: var(--primary-blue);
+  font-weight: 600;
+}
+
+.compact-card-sep {
+  color: var(--soft-blue-border);
+}
+
+.compact-card-year {
+  color: var(--text-muted);
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+/* Compact Card Footer - View Link & Tooltip */
+.compact-card-footer {
+  position: relative;
+  margin-top: auto;
+}
+
+.compact-card-view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-blue);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: var(--soft-blue-wash);
+  border: 1px solid var(--soft-blue-border);
+  transition: all 0.25s ease;
+}
+
+.compact-card-view-link:hover {
+  background: var(--primary-blue);
+  color: var(--text-white);
+  border-color: var(--primary-blue);
+}
+
+/* Tooltip */
+.compact-card-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  max-width: 280px;
+  padding: 12px 14px;
+  background: var(--text-dark);
+  color: var(--text-white);
+  border-radius: 8px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  z-index: 10;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  animation: tooltipFadeIn 0.2s ease;
+  display: none;
+}
+
+.compact-card-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 20px;
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: var(--text-dark) transparent transparent transparent;
+}
+
+@keyframes tooltipFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Touch support for compact cards */
+@media (hover: none) {
+  .compact-card-root {
+    transform: none !important;
+  }
+  .compact-card-root:hover .light-sweep-beam {
+    left: -150%;
+  }
+  .compact-card-tooltip {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   5. PROFILE IMAGE 3D TILT & GLARE
+   ========================================================================== */
+.profile-tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.1s linear, box-shadow 0.1s linear;
+  will-change: transform, box-shadow;
+  /* Base shadow for depth */
+  box-shadow:
+    0 8px 30px rgba(2, 132, 199, 0.2),
+    0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Entrance Animation */
+.profile-entrance {
+  opacity: 0;
+  transform: perspective(1000px) rotateX(15deg) rotateY(-15deg) scale(0.85) translateY(30px);
+}
+
+.profile-entrance-done {
+  animation: profileEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes profileEntrance {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(15deg) rotateY(-15deg) scale(0.85) translateY(30px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.02) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1) translateY(0);
+  }
+}
+
+.profile-glare {
+  position: absolute;
+  width: 180%;
+  height: 180%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.1) 30%,
+    rgba(255, 255, 255, 0.04) 50%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.profile-tilt-card:hover .profile-glare {
+  opacity: 1;
+}
+
+/* Enhanced sheen for extra depth */
+.profile-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0.15) 30%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.02) 100%
+  );
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Inner glow for depth perception */
+.profile-circle-frame::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(2, 132, 199, 0.08) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.profile-tilt-card:hover .profile-circle-frame::before {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   6. FLOATING BACK TO TOP BUTTON
+   ========================================================================== */
+.back-to-top-float {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.9);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1000;
+}
+
+.back-to-top-float.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.back-to-top-float:hover {
+  background: var(--primary-blue-hover);
+  border-color: var(--primary-blue-hover);
+  box-shadow: 0 8px 28px rgba(2, 132, 199, 0.45);
+  transform: translateY(-4px) scale(1.05);
+}
+
+.back-to-top-float:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.back-to-top-float:focus-visible {
+  outline: 3px solid var(--accent-light-blue);
+  outline-offset: 3px;
+}
+
+/* BackToTop component adds .visible class via state */
+.back-to-top-float[data-visible="true"] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* ==========================================================================
+   7. SECTION BACK LINK
+   ========================================================================== */
+.section-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-blue);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 24px;
+  background: var(--soft-blue-wash);
+  border: 1px solid var(--soft-blue-border);
+  margin-bottom: 24px;
+  transition: all 0.25s ease;
+  width: fit-content;
+}
+
+.section-back-link:hover {
+  background: var(--primary-blue);
+  color: var(--text-white);
+  border-color: var(--primary-blue);
+  transform: translateX(-4px);
+}
+
+.section-back-link:focus-visible {
+  outline: 3px solid var(--accent-light-blue);
+  outline-offset: 3px;
+}
+
+.experience-back-link {
+  margin-left: 0;
+}
+
+/* ==========================================================================
+   8. SCROLL MARGIN FOR STICKY NAVBAR OFFSET
+   ========================================================================== */
+:root {
+  --header-height: 72px;
+}
+
+/* Ensure section headings aren't hidden by sticky navbar */
+section[id] {
+  scroll-margin-top: calc(var(--header-height) + 20px);
+}
+
+/* Specific offset for experience section */
+#experience {
+  scroll-margin-top: calc(var(--header-height) + 10px);
+}
+
+/* ==========================================================================
+   9. COMPREHENSIVE RESPONSIVE DESIGN (<=768px Tablet, <=480px Mobile)
    ========================================================================== */
 
 /* Touch-Friendly Minimum Tap Targets (~44px) */
@@ -2635,6 +3077,35 @@ body {
 
   .project-slider-wrapper {
     gap: 12px;
+  }
+
+  /* Compact cards: 2 columns on tablet */
+  .compact-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .compact-card-inner {
+    min-height: 160px;
+    padding: 20px 16px;
+  }
+
+  .compact-card-title {
+    font-size: 15px;
+  }
+
+  /* Back to top button - smaller on tablet */
+  .back-to-top-float {
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Section back link */
+  .section-back-link {
+    font-size: 12px;
+    padding: 6px 12px;
   }
 }
 
@@ -2753,6 +3224,45 @@ body {
     width: 100%;
     justify-content: center;
   }
+
+  /* Compact cards: 1 column on mobile */
+  .compact-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .compact-card-inner {
+    min-height: 150px;
+    padding: 18px 14px;
+  }
+
+  .compact-card-title {
+    font-size: 14.5px;
+  }
+
+  .compact-card-badge {
+    font-size: 10.5px;
+    padding: 3px 8px;
+  }
+
+  .compact-card-icon-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Back to top button - smaller on mobile */
+  .back-to-top-float {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Section back link */
+  .section-back-link {
+    font-size: 11.5px;
+    padding: 5px 10px;
+  }
 }
 
 /* ==========================================================================
@@ -2764,16 +3274,33 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   html {
     scroll-behavior: auto;
   }
-  
+
   .profile-tilt-card,
   .rotating-gradient-ring,
   .rotating-gradient-blur,
   .aurora-blob,
-  .page-slide-in {
+  .page-slide-in,
+  .light-sweep-beam,
+  .card-spotlight-glow,
+  .profile-glare,
+  .back-to-top-float,
+  .profile-entrance,
+  .profile-entrance-done {
     animation: none !important;
+    transition: none !important;
+  }
+
+  .profile-entrance {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .profile-entrance-done {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

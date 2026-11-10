@@ -1,11 +1,19 @@
 import { motion } from 'framer-motion';
 import ExperienceCard from './ExperienceCard.jsx';
+import SectionBackLink from './SectionBackLink.jsx';
 import { portfolio } from '../data/portfolio.js';
 
 export default function ExperienceSection() {
   return (
     <section id="experience" className="content-section experience-section">
       <div className="section-container">
+        {/* Section Back Link */}
+        <SectionBackLink
+          targetSection="about"
+          label="Back to About section"
+          className="experience-back-link"
+        />
+
         {/* Section Header */}
         <motion.div
           className="section-header-block"

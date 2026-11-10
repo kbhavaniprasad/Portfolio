@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FiAward, FiBookOpen, FiMapPin, FiCheckCircle, FiFileText } from 'react-icons/fi';
 import SharedCard from './SharedCard.jsx';
+import CompactCard from './CompactCard.jsx';
 import { portfolio } from '../data/portfolio.js';
 
 export default function AboutSection() {
@@ -39,7 +40,7 @@ export default function AboutSection() {
               Crafting scalable web systems, low-latency computer vision pipelines, and resilient full-stack applications.
             </h3>
             <p className="narrative-text">
-              I am a Computer Science &amp; Engineering graduate from Lakireddy Bali Reddy College of Engineering with an 8.37 CGPA. My focus spans end-to-end MERN web development, REST API design, and applied AI systems.
+              I am a Computer Science & Engineering graduate from Lakireddy Bali Reddy College of Engineering with an 8.37 CGPA. My focus spans end-to-end MERN web development, REST API design, and applied AI systems.
             </p>
             <p className="narrative-text">
               From building real-time sign language recognition using 21 hand landmarks to co-inventing an AI-based precision pesticide-spraying drone system trained on 50,000+ agricultural images, I merge mathematical principles with scalable software architectures.
@@ -99,61 +100,58 @@ export default function AboutSection() {
           </motion.div>
         </div>
 
-        {/* Honors & Awards Section */}
+        {/* Honors & Awards and Patents Side by Side */}
         <motion.div
-          className="about-subsection-block"
+          className="about-honors-patents-grid"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.7, ease: 'easeInOut' }}
         >
-          <h3 className="column-title">
-            <FiAward className="title-icon" />
-            <span>Honors &amp; Awards</span>
-          </h3>
+          {/* Honors & Awards Section */}
+          <div className="about-subsection-block">
+            <h3 className="column-title">
+              <FiAward className="title-icon" />
+              <span>Honors & Awards</span>
+            </h3>
 
-          <div className="shared-cards-flex-container">
-            {portfolio.honors.map((honor, idx) => (
-              <motion.div
-                key={honor.id}
-                className="shared-flex-item"
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.7, delay: idx * 0.15, ease: 'easeInOut' }}
-              >
-                <SharedCard item={honor} index={idx} />
-              </motion.div>
-            ))}
+            <div className="compact-cards-grid">
+              {portfolio.honors.map((honor, idx) => (
+                <motion.div
+                  key={honor.id}
+                  className="compact-card-item"
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.7, delay: idx * 0.1, ease: 'easeInOut' }}
+                >
+                  <CompactCard item={honor} index={idx} type="honor" />
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </motion.div>
 
-        {/* Patents Section */}
-        <motion.div
-          className="about-subsection-block"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.7, ease: 'easeInOut' }}
-        >
-          <h3 className="column-title">
-            <FiFileText className="title-icon" />
-            <span>Patents</span>
-          </h3>
+          {/* Patents Section */}
+          <div className="about-subsection-block">
+            <h3 className="column-title">
+              <FiFileText className="title-icon" />
+              <span>Patents</span>
+            </h3>
 
-          <div className="shared-cards-flex-container">
-            {portfolio.patents.map((patent, idx) => (
-              <motion.div
-                key={patent.id}
-                className="shared-flex-item"
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.7, delay: idx * 0.15, ease: 'easeInOut' }}
-              >
-                <SharedCard item={patent} index={idx} />
-              </motion.div>
-            ))}
+            <div className="compact-cards-grid">
+              {portfolio.patents.map((patent, idx) => (
+                <motion.div
+                  key={patent.id}
+                  className="compact-card-item"
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.7, delay: idx * 0.1, ease: 'easeInOut' }}
+                >
+                  <CompactCard item={patent} index={idx} type="patent" />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
 
@@ -170,17 +168,17 @@ export default function AboutSection() {
             <span>Certifications</span>
           </h3>
 
-          <div className="shared-cards-flex-container">
+          <div className="compact-cards-grid">
             {portfolio.certifications.map((cert, idx) => (
               <motion.div
                 key={cert.id}
-                className="shared-flex-item"
+                className="compact-card-item"
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.7, delay: idx * 0.12, ease: 'easeInOut' }}
+                transition={{ duration: 0.7, delay: idx * 0.08, ease: 'easeInOut' }}
               >
-                <SharedCard item={cert} index={idx} />
+                <CompactCard item={cert} index={idx} type="certification" />
               </motion.div>
             ))}
           </div>
