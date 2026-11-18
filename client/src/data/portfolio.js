@@ -103,27 +103,27 @@ export const portfolio = {
   // Categorized Skills (Frontend, Backend, Database, Tools)
   skills: {
     Frontend: [
-      { name: "React.js", pct: 92, iconKey: "react", level: "Hooks, Router, State & Vitest" },
-      { name: "JavaScript (ES6+)", pct: 94, iconKey: "javascript", level: "Async/Await, Closures, DOM" },
-      { name: "HTML5 & CSS3", pct: 90, iconKey: "html5", level: "Semantic Markup & Responsive UI" },
-      { name: "Tailwind CSS", pct: 88, iconKey: "tailwind", level: "Utility-First Styling & Theming" }
+      { name: "React.js", pct: 80, iconKey: "react", level: "Hooks, Router, State & Vitest" },
+      { name: "JavaScript (ES6+)", pct: 80, iconKey: "javascript", level: "Async/Await, Closures, DOM" },
+      { name: "HTML5 & CSS3", pct: 80, iconKey: "html5", level: "Semantic Markup & Responsive UI" },
+      { name: "Tailwind CSS", pct: 75, iconKey: "tailwind", level: "Utility-First Styling & Theming" }
     ],
     Backend: [
-      { name: "Node.js", pct: 88, iconKey: "nodejs", level: "Event-Driven Asynchronous Runtime" },
-      { name: "Express.js", pct: 86, iconKey: "express", level: "RESTful Routing & Middleware" },
-      { name: "REST APIs", pct: 90, iconKey: "api", level: "Architecture, Auth & Rate-Limiting" },
-      { name: "Java", pct: 84, iconKey: "java", level: "Object-Oriented Programming & DSA" }
+      { name: "Node.js", pct: 80, iconKey: "nodejs", level: "Event-Driven Asynchronous Runtime" },
+      { name: "Express.js", pct: 75, iconKey: "express", level: "RESTful Routing & Middleware" },
+      { name: "REST APIs", pct: 85, iconKey: "api", level: "Architecture, Auth & Rate-Limiting" },
+      { name: "Java", pct: 80, iconKey: "java", level: "Object-Oriented Programming & DSA" }
     ],
     Database: [
-      { name: "MongoDB", pct: 88, iconKey: "mongodb", level: "Mongoose ODM & Aggregation Pipelines" },
-      { name: "SQL", pct: 82, iconKey: "sql", level: "Relational Modeling, Joins & Queries" }
+      { name: "MongoDB", pct: 80, iconKey: "mongodb", level: "Mongoose ODM & Aggregation Pipelines" },
+      { name: "SQL", pct: 60, iconKey: "sql", level: "Relational Modeling, Joins & Queries" }
     ],
     Tools: [
-      { name: "Python", pct: 90, iconKey: "python", level: "AI/ML, OpenCV & Scientific Scripting" },
-      { name: "TensorFlow & Keras", pct: 85, iconKey: "tensorflow", level: "Deep Neural Networks & Inference" },
-      { name: "OpenCV & MediaPipe", pct: 86, iconKey: "opencv", level: "Computer Vision & Landmark Tracking" },
-      { name: "Git & GitHub", pct: 92, iconKey: "git", level: "Version Control & Collaborative PRs" },
-      { name: "Data Structures & Algorithms", pct: 88, iconKey: "dsa", level: "Algorithmic Efficiency & Complexities" }
+      { name: "Python", pct: 70, iconKey: "python", level: "AI/ML, OpenCV & Scientific Scripting" },
+      //{ name: "TensorFlow & Keras", pct: 85, iconKey: "tensorflow", level: "Deep Neural Networks & Inference" },
+      //{ name: "OpenCV & MediaPipe", pct: 86, iconKey: "opencv", level: "Computer Vision & Landmark Tracking" },
+      { name: "Git & GitHub", pct: 75, iconKey: "git", level: "Version Control & Collaborative PRs" },
+      { name: "Data Structures & Algorithms", pct: 70, iconKey: "dsa", level: "Algorithmic Efficiency & Complexities" }
     ]
   },
 

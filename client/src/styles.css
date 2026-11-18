@@ -993,6 +993,15 @@ body {
   to { transform: rotate(360deg); }
 }
 
+/* Gentle, continuous 3D rotation for the profile photo */
+@keyframes profilePhotoRotate {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  25% { transform: rotateX(4deg) rotateY(-5deg); }
+  50% { transform: rotateX(0deg) rotateY(5deg); }
+  75% { transform: rotateX(-4deg) rotateY(-4deg); }
+  100% { transform: rotateX(0deg) rotateY(0deg); }
+}
+
 .profile-circle-frame {
   position: relative;
   width: 100%;
@@ -1003,6 +1012,12 @@ body {
   overflow: hidden;
   z-index: 2;
   box-shadow: 0 8px 30px rgba(2, 132, 199, 0.2);
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  backface-visibility: hidden;
+  will-change: transform;
+  animation: profilePhotoRotate 7s ease-in-out infinite;
 }
 
 .profile-photo-img {
@@ -1210,21 +1225,99 @@ body {
   margin-top: 48px;
 }
 
+/* Honors & Patents Wrapper - adds top spacing from About card above */
+.about-honors-patents-wrapper {
+  padding-top: 56px; /* 48-64px top padding above headings */
+}
+
 /* Honors & Patents Side-by-Side Grid */
 .about-honors-patents-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
+  gap: 24px; /* consistent small gap between sections */
+  align-items: start;
 }
 
 @media (min-width: 768px) {
   .about-honors-patents-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr auto; /* Patents only takes needed width */
+    align-items: start;
   }
 }
 
+/* Each section wrapped in glass-card container */
 .about-honors-patents-grid .about-subsection-block {
   margin-top: 0;
+  padding: 24px; /* identical inner padding */
+  border-radius: 18px;
+  background: var(--card-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--soft-blue-border);
+  box-shadow: var(--card-shadow);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ensure headings align at same baseline */
+.about-honors-patents-grid .column-title {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Compact cards grid inside each section - consistent sizing */
+.about-honors-patents-grid .compact-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .about-honors-patents-grid .compact-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Honors grid: 2 cards side by side on desktop */
+.honors-cards-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Patents grid: single card, fixed width to match honors card width */
+.patents-cards-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .patents-cards-grid {
+    grid-template-columns: minmax(320px, 1fr); /* match honors card width */
+  }
+}
+
+/* Equal height cards with stretch */
+.about-honors-patents-grid .compact-card-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-honors-patents-grid .compact-card-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.about-honors-patents-grid .compact-card-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px; /* consistent height */
+  height: 100%;
+}
+
+/* Hover uses transform only, no layout shift */
+.about-honors-patents-grid .compact-card-root:hover .compact-card-inner {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--primary-blue);
 }
 
 .about-achievements-block {
@@ -1663,6 +1756,37 @@ body {
 
 .single-project-slide {
   width: 100%;
+}
+
+/* Internship Carousel Viewport (Single Slide at a Time) */
+.internship-card-viewport {
+  width: 100%;
+  max-width: 820px;
+  min-height: 560px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.single-internship-slide {
+  width: 100%;
+}
+
+/* Internship Slider Wrapper (Flanked by Left & Right Arrows) */
+.internship-slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: 20px 0;
+}
+
+@media (min-width: 768px) {
+  .internship-slider-wrapper {
+    gap: 12px;
+  }
 }
 
 .project-focus-card {
@@ -2851,10 +2975,6 @@ body {
   z-index: 3;
 }
 
-.profile-tilt-card:hover .profile-glare {
-  opacity: 1;
-}
-
 /* Enhanced sheen for extra depth */
 .profile-sheen {
   position: absolute;
@@ -2871,7 +2991,7 @@ body {
   z-index: 4;
 }
 
-/* Inner glow for depth perception */
+/* Inner glow for depth perception - stays subtle, no hover fade */
 .profile-circle-frame::before {
   content: '';
   position: absolute;
@@ -2886,10 +3006,6 @@ body {
   z-index: 1;
   opacity: 0;
   transition: opacity 0.4s ease;
-}
-
-.profile-tilt-card:hover .profile-circle-frame::before {
-  opacity: 1;
 }
 
 /* ==========================================================================
@@ -3280,6 +3396,8 @@ section[id] {
   }
 
   .profile-tilt-card,
+  .profile-circle-frame,
+  .profile-photo-img,
   .rotating-gradient-ring,
   .rotating-gradient-blur,
   .aurora-blob,

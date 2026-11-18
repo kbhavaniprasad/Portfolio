@@ -45,14 +45,14 @@ export default function Footer({ scrollToSection }) {
         </div>
 
         <div className="footer-right">
-          <button
+          {/* <button
             onClick={() => scrollToSection('hero')}
             className="back-to-top-button"
             aria-label="Back to top"
           >
             <span>Back to top</span>
             <FiArrowUp size={16} />
-          </button>
+          </button> */}
         </div>
       </div>
     </footer>

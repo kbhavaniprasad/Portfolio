@@ -102,55 +102,57 @@ export default function AboutSection() {
 
         {/* Honors & Awards and Patents Side by Side */}
         <motion.div
-          className="about-honors-patents-grid"
+          className="about-honors-patents-wrapper"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.7, ease: 'easeInOut' }}
         >
-          {/* Honors & Awards Section */}
-          <div className="about-subsection-block">
-            <h3 className="column-title">
-              <FiAward className="title-icon" />
-              <span>Honors & Awards</span>
-            </h3>
+          <div className="about-honors-patents-grid">
+            {/* Honors & Awards Section */}
+            <div className="about-subsection-block glass-card">
+              <h3 className="column-title">
+                <FiAward className="title-icon" />
+                <span>Honors & Awards</span>
+              </h3>
 
-            <div className="compact-cards-grid">
-              {portfolio.honors.map((honor, idx) => (
-                <motion.div
-                  key={honor.id}
-                  className="compact-card-item"
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.15 }}
-                  transition={{ duration: 0.7, delay: idx * 0.1, ease: 'easeInOut' }}
-                >
-                  <CompactCard item={honor} index={idx} type="honor" />
-                </motion.div>
-              ))}
+              <div className="compact-cards-grid honors-cards-grid">
+                {portfolio.honors.map((honor, idx) => (
+                  <motion.div
+                    key={honor.id}
+                    className="compact-card-item"
+                    initial={{ opacity: 0, y: 25 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{ duration: 0.7, delay: idx * 0.1, ease: 'easeInOut' }}
+                  >
+                    <CompactCard item={honor} index={idx} type="honor" />
+                  </motion.div>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Patents Section */}
-          <div className="about-subsection-block">
-            <h3 className="column-title">
-              <FiFileText className="title-icon" />
-              <span>Patents</span>
-            </h3>
+            {/* Patents Section */}
+            <div className="about-subsection-block glass-card">
+              <h3 className="column-title">
+                <FiFileText className="title-icon" />
+                <span>Patents</span>
+              </h3>
 
-            <div className="compact-cards-grid">
-              {portfolio.patents.map((patent, idx) => (
-                <motion.div
-                  key={patent.id}
-                  className="compact-card-item"
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.15 }}
-                  transition={{ duration: 0.7, delay: idx * 0.1, ease: 'easeInOut' }}
-                >
-                  <CompactCard item={patent} index={idx} type="patent" />
-                </motion.div>
-              ))}
+              <div className="compact-cards-grid patents-cards-grid">
+                {portfolio.patents.map((patent, idx) => (
+                  <motion.div
+                    key={patent.id}
+                    className="compact-card-item"
+                    initial={{ opacity: 0, y: 25 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{ duration: 0.7, delay: idx * 0.1, ease: 'easeInOut' }}
+                  >
+                    <CompactCard item={patent} index={idx} type="patent" />
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </motion.div>

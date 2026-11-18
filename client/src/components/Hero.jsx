@@ -55,7 +55,7 @@ export default function Hero({ scrollToSection }) {
       <div className="hero-container">
         {/* Left Column: Greeting, Typing Typography, Bio, CTAs, Stats */}
         <div className="hero-left-column">
-          <motion.div
+          {/* <motion.div
             className="hero-badge-pill"
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,7 +63,7 @@ export default function Hero({ scrollToSection }) {
           >
             <span className="live-status-dot" />
             <span className="badge-text">Open for Full-Stack &amp; AI Engineering Roles</span>
-          </motion.div>
+          </motion.div> */}
 
           <div className="hero-greeting-block">
             <span className="eyebrow-lead">WELCOME TO MY PORTFOLIO</span>

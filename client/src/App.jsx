@@ -13,8 +13,10 @@ import ContactSection from './components/ContactSection.jsx';
 import QuestionnaireSection from './components/QuestionnaireSection.jsx';
 import Footer from './components/Footer.jsx';
 import BackToTop from './components/BackToTop.jsx';
+import SeatSelection from './components/SeatSelection.jsx';
 
 export default function App() {
+  if (window.location.pathname === '/seat-selection') return <SeatSelection />;
   const [activeSection, setActiveSection] = useState('hero');
 
   // 1. Initialize Lenis Smooth Scrolling
